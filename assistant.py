@@ -1,23 +1,17 @@
 import speech_recognition as sr
 import pyttsx3
 from pyautogui import*
+from playsound import playsound
+from tkinter import messagebox
+import random as rn
 
-# Initialize the recognizer
+FAILSAFE = False
 r = sr.Recognizer()
-
-# Funtion to convert text to
-# speech
 def SpeakText(command):
-    
-    # Initialize the engine
     engine = pyttsx3.init()
-    
     engine.say(command)
     engine.runAndWait()
-    
-    
-# Loop infinitely for user to
-# speak
+
 print('Loading')
 write('....', interval = 1)
 SpeakText('Hello, how can i help you')
@@ -40,28 +34,14 @@ Commands list:
 """
 
 while(1):
-    
-    # Exception handling to handle
-    # exceptions at the runtime
     try:
-        
-        # use the microphone as source for input.
         with sr.Microphone() as source2:
-            
-            # wait for a second to let the recognizer
-            # adjust the energy threshold based on
-            # the surrounding noise level
             r.adjust_for_ambient_noise(source2, duration=0.2)
-            
-            #listens for the user's input
             audio2 = r.listen(source2)
-            
-            # Using google to recognize audio
             MyText = r.recognize_google(audio2)
             MyText = MyText.lower().split(" ")
             print(MyText)
-            if "song" in MyText:             
-            # if MyText == 'play a song' or MyText == "mujhe ek gana sunna hai" :
+            if "song" in MyText:            
                                                     SpeakText('Okay what song would you like to hear?')
                                                     print("Okay what song would you like to hear?")
                                                     audio2 = r.listen(source2)            
@@ -79,30 +59,7 @@ while(1):
                                                     x = MySong + ' song'
                                                     write(x, interval = 0.1)
                                                     press('enter', interval = 3)
-                                                    click(x=600, y= 380, button = 'left')
-                                                    
-                                    
-            # elif MyText == "show my channel on youtube":
-            #                                         SpeakText('Opening Youtube')
-            #                                         print('Opening youtube')
-            #                                         keyDown('win')
-            #                                         press('r')
-            #                                         keyUp('win')
-            #                                         write('brave')
-            #                                         press('enter', interval = 3)
-            #                                         write('https://www.youtube.com/channel/UCDzWo3sdRD6LnQUETpFpP4g/videos')
-            #                                         press('enter')            
-                                              
-            # elif MyText == "play that song":
-            #                                         SpeakText('Now playing After Dark x Sweater Weather from youtube')
-            #                                         print('Now playing After Dark x Sweater Weather from youtube')
-            #                                         keyDown('win')
-            #                                         press('r')
-            #                                         keyUp('win')
-            #                                         write('brave')
-            #                                         press('enter', interval = 3)
-            #                                         write('https://youtu.be/hvL-2TF9bLY')
-            #                                         press('enter')           
+                                                    click(x=600, y= 380, button = 'left')         
 
             elif "decrease" in MyText:
                                                     SpeakText("Decreasing the volume by 20")
@@ -239,26 +196,54 @@ while(1):
                                                         press('volumeup')
                                                     print("Volume maximised")
             elif "open" in MyText:
-                                                    SpeakText('Okay what would you like to open?')
-                                                    print('Okay what would you like to open?')
-                                                    # print("Okay what song would you like to hear?")
-                                                    audio2 = r.listen(source2)            
-                                                    # Using google to recognize audio
+                                                    SpeakText('Okay is it an app?')
+                                                    audio2 = r.listen(source2)
                                                     MySong = r.recognize_google(audio2)
                                                     MySong = MySong.lower()
-                                                    press("win")
-                                                    write(MySong, interval = 0.1)
-                                                    press("enter")
-                                                   
-                                                                                                      
+                                                    if MySong == "yes":
+                                                        press("win")
+                                                        link = "whatsapp"
+                                                        write(link, interval = 0.1)
+                                                        press("enter")  
+                                                    elif MySong == "no":
+                                                        press("win")
+                                                        link = "www."+MySong+".com"
+                                                        write(link, interval = 0.1)
+                                                        press("enter")
+                                                    else:
+                                                        print("error")
+
+            
+            elif "turi" in MyText or "ip" in MyText or "hip" in MyText or "durga" in MyText or "test" in MyText:
+
+                                                    engine = pyttsx3.init()
+                                                    swirlTheNumbers = "turip.mp3"
+                                                    playsound(swirlTheNumbers)
+                                                    engine.runAndWait()
+            
+            elif "todays" in MyText or "today" in MyText or "number" in MyText:
+                                                    engine = pyttsx3.init()
+                                                    num = rn.randint(1,10)
+                                                    swirlTheNumbers = "stn.wav"
+                                                    playsound(swirlTheNumbers)
+                                                    engine.say(num)
+                                                    engine.runAndWait()
+                                                    messagebox.showinfo("Today's number is ", num)
+            
+            elif "one" in MyText or "piece" in MyText:
+                                                    engine = pyttsx3.init()
+                                                    swirlTheNumbers = "stn.wav"
+                                                    playsound(swirlTheNumbers)
+                                                    engine.say(num)
+                                                    engine.runAndWait()
+                                                    messagebox.showinfo("Today's number is ", num)
+                                                                                                
             else:
                 print("Sorry i could not understand that ")
-                # SpeakText("Sorry i could not understand that")
-                            
-            
+                                 
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
         
     except sr.UnknownValueError:
         print("******")
-    
+        
