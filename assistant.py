@@ -9,7 +9,7 @@ import random as rn
 FAILSAFE = False
 engine = pyttsx3.init()
 r = sr.Recognizer() 
-def SpeakText(command):
+def SpeakText(command): 
     engine = pyttsx3.init()
     engine.say(command)
     engine.runAndWait() 
@@ -43,6 +43,7 @@ while(1):
             audio2 = r.listen(source2)
             MyText = r.recognize_google(audio2)
             MyText = MyText.lower().split(" ")
+            print("Listening...")
             print(MyText)
             if "song" in MyText:            
                                                     SpeakText('Okay what song would you like to hear?')
@@ -216,7 +217,6 @@ while(1):
                                                         press("enter")
                                                     else:
                                                         print("error")
-
             
             elif "test" in MyText:
                                                     swirlTheNumbers = "turip.mp3"
@@ -232,16 +232,17 @@ while(1):
                                                     messagebox.showinfo("Today's number is ", num)
             
             elif "piece" in MyText:
-                                                    swirlTheNumbers = "stn.wav"
+                                                    swirlTheNumbers = "cwgmh.mp3"
                                                     playsound(swirlTheNumbers)
-                                                    engine.say(num)
-                                                    engine.runAndWait()
-                                                    messagebox.showinfo("Today's number is ", num)
-                                                                                                
+            
+            elif "dam" in MyText:
+                                                    swirlTheNumbers = "augh.mp3"
+                                                    playsound(swirlTheNumbers)
+                                        
             else:
                                                     swirlTheNumbers = "wytam.mp3"
                                                     playsound(swirlTheNumbers)
-                                                    # engine.runAndWait()
+                                                
                                  
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
