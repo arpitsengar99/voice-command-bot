@@ -6,16 +6,16 @@ from tkinter import messagebox
 import random as rn
 
 FAILSAFE = False
+engine = pyttsx3.init()
 r = sr.Recognizer()
 def SpeakText(command):
     engine = pyttsx3.init()
     engine.say(command)
-    engine.runAndWait()
+    engine.runAndWait() 
 
-print('Loading')
-write('....', interval = 1)
-SpeakText('Hello, how can i help you')
-print('Hello, how can i help you')
+# swirlTheNumbers = """"
+playsound("C:/Users/asus/Desktop/project1/audio/yccms.mp3")
+print("Listening....")
 
 """
 Commands list:
@@ -41,7 +41,8 @@ while(1):
             MyText = r.recognize_google(audio2)
             MyText = MyText.lower().split(" ")
             print(MyText)
-            if "song" in MyText:            
+            match MyText:
+                case "song":            
                                                     SpeakText('Okay what song would you like to hear?')
                                                     print("Okay what song would you like to hear?")
                                                     audio2 = r.listen(source2)            
@@ -61,41 +62,41 @@ while(1):
                                                     press('enter', interval = 3)
                                                     click(x=600, y= 380, button = 'left')         
 
-            elif "decrease" in MyText:
+                case "decrease":
                                                     SpeakText("Decreasing the volume by 20")
                                                     print("Volume decreased by 20")
                                                     for i in range(11):
                                                         press('volumedown')
 
-            elif "increase" in MyText:
+                case "increase":
                                                     SpeakText("Increasing the volume by 20")
                                                     print("Volume increased by 20")
                                                     for i in range(11):
                                                         press('volumeup')
 
-            elif "mute" in MyText:
+                case "mute":
                                                     SpeakText("Volume muted")
                                                     print("Volume muted")
                                                     press('volumemute')
                                                 
-            elif "unmute" in MyText:
+                case "unmute":
                                                     SpeakText("Volume unmuted")
                                                     print("Volume unmuted")
                                                     press('volumemute')
             
-            elif "home" in MyText:                              
+                case "home":                              
                                                     keyDown('win')
                                                     press('d')
                                                     keyUp('win')
             
-            elif "switch" in MyText:
+                case "switch":
                                                     SpeakText("Switching tabs")
                                                     print("Tabs switched")
                                                     keyDown('alt')
                                                     press('tab')
                                                     keyUp('alt')
 
-            elif "create" in MyText:
+                case "create":
                                                     SpeakText("Creating a desktop")
                                                     print("Desktop created successfully")
                                                     keyDown('win')
@@ -103,7 +104,7 @@ while(1):
                                                     press('d')
                                                     keyUp('ctrl')
                                                     keyDown('win')
-            elif "close" in MyText: 
+                case "close": 
                                                     for i in range(10):
                                                         keyDown('win')
                                                         keyDown('ctrl')
@@ -114,19 +115,19 @@ while(1):
                                                     print("All desktops deleted successfully")
                                                     
                                                     
-            elif "minimise" in MyText:
+                case "minimize":
                                                     print("Window minimized")
                                                     keyDown('win')
                                                     press('down')
                                                     keyUp('win')
                                                     
-            elif "close" in MyText :
+                case "close":
                                                     print("Application closed")
                                                     keyDown('alt')
                                                     press('f4')
                                                     keyUp('alt')
 
-            elif "left" in MyText:
+                case "left":
                                                     print("Desktop switched to the left")
                                                     keyDown('win')
                                                     keyDown('ctrl')
@@ -134,7 +135,7 @@ while(1):
                                                     keyUp('ctrl')
                                                     keyDown('win')
 
-            elif "right" in MyText:
+                case "right":
                                                     print("Desktop switched to the right")
                                                     keyDown('win')
                                                     keyDown('ctrl')
@@ -142,7 +143,7 @@ while(1):
                                                     keyUp('ctrl')
                                                     keyDown('win')
 
-            elif "shutdown" in MyText or "shut" in MyText:
+                case "shutdown":
                                                     SpeakText("shutting down in")
                                                     SpeakText("5")
                                                     write('.', interval = 0.15)
@@ -161,7 +162,7 @@ while(1):
                                                     keyUp('alt')
                                                     press('enter')
                 
-            elif "reboot" in MyText:
+                case "reboot":
                                                     SpeakText("rebooting in")
                                                     SpeakText("5")
                                                     write('.', interval = 0.25)
@@ -181,7 +182,7 @@ while(1):
                                                     press('down')
                                                     press('enter')                               
             
-            elif "refresh" in MyText:
+                case "refresh":
                                                     keyDown('win')
                                                     press('d')
                                                     keyUp('win')
@@ -191,11 +192,12 @@ while(1):
                                                         keyUp('fn')
                                                     print("System refreshed")
 
-            elif "maximum" in MyText:            
+                case "maximum":            
                                                     for i in range(50):
                                                         press('volumeup')
                                                     print("Volume maximised")
-            elif "open" in MyText:
+                
+                case "open":
                                                     SpeakText('Okay is it an app?')
                                                     audio2 = r.listen(source2)
                                                     MySong = r.recognize_google(audio2)
@@ -214,15 +216,12 @@ while(1):
                                                         print("error")
 
             
-            elif "turi" in MyText or "ip" in MyText or "hip" in MyText or "durga" in MyText or "test" in MyText:
-
-                                                    engine = pyttsx3.init()
+                case "test":
                                                     swirlTheNumbers = "turip.mp3"
                                                     playsound(swirlTheNumbers)
                                                     engine.runAndWait()
             
-            elif "todays" in MyText or "today" in MyText or "number" in MyText:
-                                                    engine = pyttsx3.init()
+                case "number":
                                                     num = rn.randint(1,10)
                                                     swirlTheNumbers = "stn.wav"
                                                     playsound(swirlTheNumbers)
@@ -230,16 +229,15 @@ while(1):
                                                     engine.runAndWait()
                                                     messagebox.showinfo("Today's number is ", num)
             
-            elif "one" in MyText or "piece" in MyText:
-                                                    engine = pyttsx3.init()
+                case "piece":
                                                     swirlTheNumbers = "stn.wav"
                                                     playsound(swirlTheNumbers)
                                                     engine.say(num)
                                                     engine.runAndWait()
                                                     messagebox.showinfo("Today's number is ", num)
                                                                                                 
-            else:
-                print("Sorry i could not understand that ")
+                case _:
+                    print("Sorry i could not understand that ")
                                  
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
