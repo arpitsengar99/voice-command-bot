@@ -5,9 +5,10 @@ from playsound import playsound
 from tkinter import messagebox
 import random as rn
 
+
 FAILSAFE = False
 engine = pyttsx3.init()
-r = sr.Recognizer()
+r = sr.Recognizer() 
 def SpeakText(command):
     engine = pyttsx3.init()
     engine.say(command)
@@ -16,6 +17,8 @@ def SpeakText(command):
 # swirlTheNumbers = """"
 playsound("C:/Users/asus/Desktop/project1/audio/yccms.mp3")
 print("Listening....")
+
+
 
 """
 Commands list:
@@ -236,7 +239,9 @@ while(1):
                                                     messagebox.showinfo("Today's number is ", num)
                                                                                                 
             else:
-                    print("Sorry i could not understand that ")
+                                                    swirlTheNumbers = "wytam.mp3"
+                                                    playsound(swirlTheNumbers)
+                                                    # engine.runAndWait()
                                  
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
