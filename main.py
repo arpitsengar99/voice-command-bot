@@ -51,18 +51,31 @@ print("Listening....")
 
 """
 Commands list:
-1. Mute
-2. Unmute
-3. Volume Increase
-4. Volume Decrease
-5. Sign off
-6. Home Screen
-7. Switch tabs
-8. Create Desktop
-9. Close Desktop
-10. Minimise
-11. Left screen
-12. Right screen
+1. custom  Song 
+2. decrease volume
+3. increase volume
+4. mute volume
+5. unmute volume
+6. home screen
+7. switch tabs
+8. create desktop
+9. delete desktop
+10. minimize screen
+11. close application
+12. left desktop
+13. right desktop
+14. shutdown
+15. reboot
+16. refresh
+17. maximum
+18. open application
+19. test audio (turi ip ip)
+20. random number (david lynch)
+21. one piece is real
+22. damn bro
+23. back to 505
+24. talk to walter
+
 """
 
 while(1):
@@ -264,15 +277,22 @@ while(1):
                                                     swirlTheNumbers = "cwgmh.mp3"
                                                     playsound(swirlTheNumbers)
             
-            elif "dam" in MyText:
-                                                    swirlTheNumbers = "augh.mp3"
+            elif "dam" in MyText or "damro" in MyText or "gogo" in MyText or "dabro" in MyText:
+                                                    swirlTheNumbers = "vineboom.mp3"
+                                                    playsound(swirlTheNumbers)
+            
+            elif "back" in MyText or "to" in MyText:
+                                                    swirlTheNumbers = "505.mp3"
+                                                    playsound(swirlTheNumbers)
+
+            elif "walter" in MyText or "walt" in MyText:
+                                                    swirlTheNumbers = "walt.mp3"
                                                     playsound(swirlTheNumbers)
                                         
             else:
                                                     swirlTheNumbers = "wytam.mp3"
                                                     playsound(swirlTheNumbers)
                                                 
-                                 
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
         
