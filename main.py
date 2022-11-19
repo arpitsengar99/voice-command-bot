@@ -266,7 +266,7 @@ while(1):
                                                         print("error")
 
             elif "test" in MyText:
-                                                    swirlTheNumbers = "turip.mp3"
+                                                    swirlTheNumbers = "audios/turip.mp3"
                                                     playsound(swirlTheNumbers)
                                                     engine.runAndWait()
             
@@ -279,23 +279,23 @@ while(1):
                                                     messagebox.showinfo("Today's number is ", num)
             
             elif "piece" in MyText:
-                                                    swirlTheNumbers = "cwgmh.mp3"
+                                                    swirlTheNumbers = "audios/cwgmh.mp3"
                                                     playsound(swirlTheNumbers)
             
             elif "dam" in MyText or "damro" in MyText or "gogo" in MyText or "dabro" in MyText:
-                                                    swirlTheNumbers = "vineboom.mp3"
+                                                    swirlTheNumbers = "audios/vineboom.mp3"
                                                     playsound(swirlTheNumbers)
             
             elif "back" in MyText or "to" in MyText:
-                                                    swirlTheNumbers = "505.mp3"
+                                                    swirlTheNumbers = "audios/505.mp3"
                                                     playsound(swirlTheNumbers)
 
             elif "walter" in MyText or "walt" in MyText:
-                                                    swirlTheNumbers = "walt.mp3"
+                                                    swirlTheNumbers = "audios/walt.mp3"
                                                     playsound(swirlTheNumbers)
                                         
             else:
-                                                    swirlTheNumbers = "wytam.mp3"
+                                                    swirlTheNumbers = "audios/wytam.mp3"
                                                     playsound(swirlTheNumbers)
                                                 
     except sr.RequestError as e:
